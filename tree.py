@@ -230,7 +230,7 @@ class Node():
         Constructor method for class node.
         """
         self.data = input_data
-        self.next_node = None
+        self.children = []
     
     def get_data(self):
         """
@@ -248,11 +248,19 @@ class Node():
         """
         Gets refrence to children nodes. 
         """
-        return self.get_children = self.children[]
+        return self.children
     
     def add_child(self):
         """
-        Gets parent node.
+        adds a child node
         """
-        self.add_child = new_child
+        newNode = Node(input_data)
+        self.children.append(newNode)
+
+    def printNode(self):
+        print(self.data)
+        print("[", end='')
+        for child in self.children:
+            child.printNode()
+        print("]", end='')
 
