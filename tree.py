@@ -1,4 +1,4 @@
-class List():
+class Tree():
     
     def __init__(self):
         """
@@ -244,14 +244,15 @@ class Node():
         """
         self.data = new_data
 
-    def get_next_node(self):
+    def get_children(self):
         """
-        Gets refrence to next node, Requires nothing and returns node. 
+        Gets refrence to children nodes. 
         """
-        return self.next_node
+        return self.get_children = self.children[]
+    
+    def add_child(self):
+        """
+        Gets parent node.
+        """
+        self.add_child = new_child
 
-    def set_next_node(self, new_next_node):
-        """
-        Sets refrence to the next node, requires new_next_node and returns nothing.
-        """
-        self.next_node = new_next_node
