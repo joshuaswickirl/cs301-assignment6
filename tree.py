@@ -42,21 +42,14 @@ class Tree(Node):
         self.children = []
 
 
-    def search(self,item):
-        """
-        Searches tree for item. Requires item and returns boolean value.
-        
-        Runs in linear time.
-        """
-        item_found = False
-        if self.head == item:
-            item_found = True
+    def search(self, item):
+        if self.data == item:
+            return True
+        elif self.children == []:
+            return False
         else:
-            for child in self.children:
-                if child == item:
-                    item_found = True
-                else:
-                    child.search(item)
+            for node in self.children:
+                node.search(item)
         
 
     def is_empty(self):
