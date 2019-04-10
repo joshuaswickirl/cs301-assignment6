@@ -60,7 +60,7 @@ def test_node_add_child_2():
 # .__init__
 def test_init_1():
     _tree = Tree()
-    assert _tree.head == None
+    assert _tree.head.data == None
 
 
 # .is_empty()
@@ -70,18 +70,36 @@ def test_is_empty_1():
 
 def test_is_empty_2():
     _tree = Tree()
-    _tree.head = 1
+    _tree.head.data = 1
     assert _tree.is_empty() == False
 
 
 # .search_for(item)
 def test_search_for_1():
-    pass
+    _tree = Tree(1)
+    _tree.head.add_child(2)
+    _tree.head.add_child(3)
+    _tree.head.get_children()[0].add_child(4)
+    _tree.head.get_children()[0].add_child(5)
+    _tree.print_tree()
+    assert _tree.search_for(5) == True
 
-def test_searh_for_2():
-    pass
+def test_search_for_2():
+    _tree = Tree(1)
+    _tree.head.add_child(2)
+    _tree.head.add_child(3)
+    _tree.head.get_children()[0].add_child(4)
+    _tree.head.get_children()[0].add_child(5)
+    _tree.print_tree()
+    assert _tree.search_for(6) == False
 
-
-# .print_tree()
-def test_print_tree():
-    pass
+def test_search_for_3():
+    _tree = Tree(1)
+    _tree.head.add_child(2)
+    _tree.head.add_child(3)
+    _tree.head.get_children()[0].add_child(4)
+    _tree.head.get_children()[0].add_child(5)
+    _tree.head.get_children()[1].add_child(6)
+    _tree.head.get_children()[1].add_child(7)
+    _tree.print_tree()
+    assert _tree.search_for(6) == True

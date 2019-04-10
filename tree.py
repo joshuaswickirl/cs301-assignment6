@@ -33,24 +33,29 @@ class Node():
 
 
 class Tree(Node):
-    """
-    Extends Node
-    """
     def __init__(self, input_data=None):
-        self.data = input_data
-        self.head = self.data
-        self.children = []
+        """
+        Adds tree head and inital Node.
+        """
+        self.head = Node(input_data)
 
-
-    def search(self, item):
-        if self.data == item:
-            return True
-        elif self.children == []:
-            return False
+    def search_for(self, item, node=None):
+        """
+        Recursively searches for the given item starting at 
+        the tree head unless a specific node is given.
+        """
+        item_found = False
+        if node == None:
+            node = self.head
+        if node.get_data() == item:
+            item_found = True
         else:
-            for node in self.children:
-                node.search(item)
-        
+            for child_node in node.get_children():
+                if item_found == True:
+                    break
+                else:
+                    item_found = self.search_for(item,child_node)
+        return item_found
 
     def is_empty(self):
         """
@@ -58,18 +63,19 @@ class Tree(Node):
         
         Runs in constant time.
         """
-        if self.head == None and self.children == []:
+        if self.head.data == None and self.head.children == []:
             return True
         else:
             return False
 
-
-    def print_tree(self):
+    def print_tree(self,node=None):
         """
         Prints tree structure
         """
-        print(self.data)
+        if node == None:
+            node = self.head
+        print(node.data, end='')
         print("[", end='')
-        for child in self.children:
-            child.print_tree()
+        for child in node.children:
+            self.print_tree(child)
         print("]", end='')
