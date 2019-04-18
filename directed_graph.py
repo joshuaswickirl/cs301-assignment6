@@ -7,7 +7,7 @@ class Vertex():
         Runs in constant time, O(1).
         """
         self.data = input_data
-        self.directed_edges = []
+        self.directed_edges = set()
     
 
     def get_data(self):
@@ -43,17 +43,25 @@ class Vertex():
 
         Runs in constant time, O(1).
         """
-        new_vertex = Node(input_data)
-        self.directed_edges.append(new_vertex)
+        self.directed_edges.add(edge_vertex)
 
-
-    def remove_directed_edge(self, edge_vertex):
-        pass
+    def print(self):
+        print(f"Vertex: {self}, Data: {self.get_data}, Directed Edges: {self.get_directed_edges})
 
 
 class DirectedGraph():
-    def __init__(self, input_data=None):
-        pass
+    def __init__(self):
+        self.verticies = set()
+
+
+    def create_vertex(self, vertex_data):
+        new_vertex = Vertex(vertex_data)
+        self.verticies.add(new_vertex)
+        return new_vertex
+
+
+    def create_edge(self, vertex_1, vertex_2):
+        vertex_1.add_directed_edge(vertex_2)
 
 
     def search_for(self, item):
@@ -61,4 +69,11 @@ class DirectedGraph():
 
     
     def is_empty(self):
+        empty = True
+        if len(self.verticies) > 0:
+            empty = False
+        return 
+        
+    
+    def print(self):
         pass
