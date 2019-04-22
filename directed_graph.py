@@ -45,35 +45,75 @@ class Vertex():
         """
         self.directed_edges.add(edge_vertex)
 
+
     def print(self):
-        print(f"Vertex: {self}, Data: {self.get_data}, Directed Edges: {self.get_directed_edges})
+        print(f"Vertex: {self}, Data: {self.data}, Directed Edges: {self.directed_edges}")
 
 
 class DirectedGraph():
     def __init__(self):
+        """
+        Creates an empty Directed Graph.
+
+        Runs in constant time, O(1).
+        """
         self.verticies = set()
 
 
     def create_vertex(self, vertex_data):
+        """
+        Creates a new Vertex and adds it to the set
+        of verticies associated with the graph.
+
+        Runs in constant time, O(1).
+        """
         new_vertex = Vertex(vertex_data)
         self.verticies.add(new_vertex)
         return new_vertex
 
 
     def create_edge(self, vertex_1, vertex_2):
+        """
+        Adds second vertex as a directed edge of the first.
+
+        Runs in constant time, O(1).
+        """
         vertex_1.add_directed_edge(vertex_2)
 
 
     def search_for(self, item):
-        pass
+        """
+        Searchs through known verticies for for the data.
+
+        Runs in linear time, O(n).
+        """
+        item_found = False
+        for vertex in self.verticies:
+            vertex_data = vertex.get_data()
+            if vertex_data == item:
+                item_found = True
+                break
+        return item_found
 
     
     def is_empty(self):
-        empty = True
+        """
+        Returns True if the list is empty, False otherwise.
+
+        Runs in constant time, O(1).
+        """
         if len(self.verticies) > 0:
-            empty = False
-        return 
+            return False
+        else:
+            return True
         
     
     def print(self):
-        pass
+        """
+        Prints the location, data, and directed edges for each
+        Vertex in the graph.
+
+        Runs in linear time, O(n).
+        """
+        for vertex in self.verticies:
+            vertex.print()
