@@ -90,7 +90,7 @@ class Tree():
             return False
 
 
-    def print_tree(self,node=None):
+    def print_tree(self, node=None):
         """
         Prints tree structure.
 
